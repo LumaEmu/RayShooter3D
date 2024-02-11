@@ -15,6 +15,7 @@ public:
 
   Color *map_pixels;
 
+
   ResourceManager();
   ~ResourceManager();
   

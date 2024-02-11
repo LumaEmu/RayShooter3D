@@ -11,10 +11,12 @@ void ResourceManager::loadGraphics(const char *map_file, const char *level_textu
   this->mesh      = GenMeshCubicmap(image_map, (Vector3){ 1.0f, 1.0f, 1.0f});
   this->model     = LoadModelFromMesh(mesh);
   
-  this->level_texture_atlas = LoadTexture(level_texture_atlas_file);
+  this->level_texture_atlas                                   = LoadTexture(level_texture_atlas_file);
   this->model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = level_texture_atlas;
 
   this->map_pixels = LoadImageColors(this->image_map);
+
+  
 }
 
 void ResourceManager::unloadGraphics() {
