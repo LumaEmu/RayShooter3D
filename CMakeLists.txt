@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.20)
-project(raycastgame)
+project(RayShooter3D)
 
 # raylib
 find_package(raylib QUIET)

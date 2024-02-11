@@ -23,7 +23,12 @@ int main() {
   Vector3 mapPosition = { 0.0f, 0.0f, 0.0f }; 
 
   while (!WindowShouldClose()) {
-    UpdateCamera(&game.player->player_camera, CAMERA_FREE);
+    Vector3 old_camera_position = game.player->player_camera.position;
+
+    UpdateCamera(&game.player->player_camera, CAMERA_FIRST_PERSON);
+    game.updateGame(old_camera_position);
+
+
     BeginDrawing();
 
       ClearBackground(RAYWHITE);

@@ -10,8 +10,10 @@ public:
   Texture2D cube_map;
   Mesh mesh;
   Model model;
-
+  
   Texture2D level_texture_atlas;
+
+  Color *map_pixels;
 
   ResourceManager();
   ~ResourceManager();

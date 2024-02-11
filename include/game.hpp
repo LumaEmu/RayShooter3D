@@ -23,14 +23,14 @@ public:
   void initGame();
   void clearResources();
   void drawGame();
-  void updateGame();
+  void updateGame(Vector3 &old_camera_position);
   void processInput();
 
   void UnloadTextures();
 
 private:
   void resetGame();
-  void checkCollisions();
+  void checkCollisions(Vector3 &old_camera_position);
 
 };
 

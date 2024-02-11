@@ -3,7 +3,6 @@
 
 
 ResourceManager::ResourceManager() {
-
 }
 
 void ResourceManager::loadGraphics(const char *map_file, const char *level_texture_atlas_file) {
@@ -15,6 +14,7 @@ void ResourceManager::loadGraphics(const char *map_file, const char *level_textu
   this->level_texture_atlas = LoadTexture(level_texture_atlas_file);
   this->model.materials[0].maps[MATERIAL_MAP_DIFFUSE].texture = level_texture_atlas;
 
+  this->map_pixels = LoadImageColors(this->image_map);
 }
 
 void ResourceManager::unloadGraphics() {

@@ -1,5 +1,6 @@
 #include "../include/game.hpp"
 #include <raylib.h>
+#include <iostream>
 
 Game::Game(float SCREEN_WIDTH, float SCREEN_HEIGHT)
   : SCREEN_WIDTH(SCREEN_WIDTH), SCREEN_HEIGHT(SCREEN_HEIGHT) {
@@ -32,9 +33,10 @@ void Game::drawGame() {
 
 }
 
-void Game::updateGame() {
-
+void Game::updateGame(Vector3 &old_camera_position) {
+  this->checkCollisions(old_camera_position);
 }
+
 
 void Game::resetGame() {
 
@@ -44,6 +46,21 @@ void Game::processInput() {
 
 }
 
-void Game::checkCollisions() {
+void Game::checkCollisions(Vector3 &old_camera_position) {
   
+  int map_height = this->resource_manager->cube_map.height;
+  int map_width  = this->resource_manager->cube_map.width;
+
+  Vector3 current_camera_position = this->player->player_camera.position;
+
+  for (int row = 0; row < map_height; row++) {
+    for (int col = 0; col < map_width; col++) {
+      if (this->resource_manager->map_pixels[row * map_width + col].r == 255 &&
+          CheckCollisionCircleRec(Vector2{current_camera_position.x, current_camera_position.z}, 0.1f, Rectangle{(float)col, (float)row, 1.0f, 1.0f})) {
+
+        this->player->player_camera.position = old_camera_position;
+        
+      }
+    }
+  }
 }
